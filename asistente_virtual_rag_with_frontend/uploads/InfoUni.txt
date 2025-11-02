@@ -1,0 +1,11 @@
+Listado de carreras
+1. Diseño gráfico - Duración: 4 años - Precio mensual: Q1,500 - Precio anual: Q18,000
+2. Perito contador - Duración: 3 años - Precio mensual: Q1,000 - Precio anual: Q12,000
+3. Ciencias y letras - Duración: 3 años - Precio mensual: Q875 - Precio anual: Q10,500
+4. Ingeniería en sistemas - Duración: 5 años - Precio mensual: Q1,850 - Precio anual: Q22,000
+5. Administración de empresas - Duración: 4 años - Precio mensual: Q1,420 - Precio anual: Q17,000
+6. Psicología - Duración: 5 años - Precio mensual: Q1,580 - Precio anual: Q19,000
+7. Derecho - Duración: 5 años - Precio mensual: Q1,750 - Precio anual: Q21,000
+8. Medicina - Duración: 7 años - Precio mensual: Q2,330 - Precio anual: Q28,000
+9. Arquitectura - Duración: 5 años - Precio mensual: Q1,960 - Precio anual: Q23,500
+10. Enfermería - Duración: 4 años - Precio mensual: Q1,250 - Precio anual: Q15,000

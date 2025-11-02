@@ -1,0 +1,25 @@
+{
+  "name": "asistente-virtual-rag",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "upload-docs": "node src/scripts/quickInsert.js",
+    "clear-docs": "node src/scripts/quickInsert.js clear"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "groq-sdk": "^0.34.0",
+    "openai": "^4.0.0",
+    "pg": "^8.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
