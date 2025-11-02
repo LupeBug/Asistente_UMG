@@ -1,1 +1,4 @@
 node_modules
+# Ignorar archivos sensibles
+.env
+frontend/.env
