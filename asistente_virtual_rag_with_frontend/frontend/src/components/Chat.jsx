@@ -1,5 +1,6 @@
 /* Importaciones de React y configuración del backend */
 import React, { useState } from 'react'
+import { sendMessageToBackend } from "../services/api"
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
 
@@ -43,37 +44,22 @@ export default function Chat() {
   const [loading, setLoading] = useState(false)
 
   /* Función asíncrona para enviar mensajes al backend y procesar respuestas */
-  async function sendMessage(e) {
-    e?.preventDefault()
-    if (!input) return
+  const handleSendMessage = async () => {
+    if (!input.trim()) return
 
-    const userMsg = { role: 'user', text: input }
-    setMessages(m => [...m, userMsg])
+    const newMessage = { text: input, sender: "user" }
+    setMessages((prev) => [...prev, newMessage])
+    setInput("")
     setLoading(true)
 
     try {
-      const res = await fetch(`${BACKEND}/api/chat/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      })
-
-      const j = await res.json()
-      const botText = j?.response || 'No response'
-
-      // Formatear respuesta del asistente
-      const formatted = formatResponse(botText)
-
-      setMessages(m => [...m, { role: 'assistant', text: formatted }])
+      const reply = await sendMessageToBackend(input)
+      setMessages((prev) => [...prev, { text: reply, sender: "bot" }])
     } catch (err) {
       console.error('❌ Error en el chat:', err)
-      setMessages(m => [
-        ...m,
-        { role: 'assistant', text: '⚠️ Error en la comunicación con el servidor.' },
-      ])
+      setMessages((prev) => [...prev, { text: '⚠️ Error en la comunicación con el servidor.', sender: "bot" }])
     } finally {
       setLoading(false)
-      setInput('')
     }
   }
 
@@ -107,7 +93,7 @@ export default function Chat() {
       </div>
 
       {/* Formulario para entrada de usuario y botón de envío */}
-      <form onSubmit={sendMessage} className="flex gap-2">
+      <form onSubmit={handleSendMessage} className="flex gap-2">
         <input
           className="flex-1 border rounded-lg p-2 shadow-inner focus:ring-2 focus:ring-blue-400 outline-none"
           placeholder="Escribe tu pregunta sobre las carreras o reglamentos..."
