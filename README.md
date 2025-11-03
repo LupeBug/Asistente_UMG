@@ -49,8 +49,9 @@ n8n automatiza la carga y actualización de documentos para el RAG. Los flujos s
 OPENAI_API_KEY: Clave para autenticar con la API de OpenAI.
 VECTOR_DB_KEY: Clave para el almacenamiento vectorial (si aplica).
 NODE_ENV: Defina el entorno (desarrollo o producción).
-📚 Documentación
-Para una documentación técnica detallada, incluyendo flujos y tecnologías, consulte el archivo DOCUMENTACION.md.
+
+📚 Documentación:
+Para una documentación técnica detallada, consulte el archivo DOCUMENTACION.md.
 
 👩‍💻 Autoría
 Proyecto desarrollado por Guadalupe Diana Rubí Barahona Casia para el curso Desarrrollo Web en UMG.
