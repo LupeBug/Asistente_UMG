@@ -1,8 +1,13 @@
-const API_URL = "https://asistente-umg-server.onrender.com";
+// frontend/src/services/api.js
+
+// 🔗 URL base del backend
+//const API_URL = "http://localhost:3000"; 
+const API_URL = "https://asistente-umg-server.onrender.com"; 
+// (para pruebas locales puedes cambiar a: "http://localhost:3000")
 
 export async function sendMessageToBackend(message) {
   try {
-    const response = await fetch(`${API_URL}/chat`, {
+    const response = await fetch(`${API_URL}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,10 +16,17 @@ export async function sendMessageToBackend(message) {
     });
 
     if (!response.ok) {
-      throw new Error("Error en la comunicación con el servidor.");
+      throw new Error(`Error ${response.status}: no se pudo contactar con el servidor.`);
     }
 
     const data = await response.json();
+
+    // Verificamos que tenga el formato esperado
+    if (!data.reply) {
+      console.error("⚠️ Respuesta inesperada del servidor:", data);
+      return "⚠️ Error en la comunicación con el servidor.";
+    }
+
     return data.reply;
   } catch (error) {
     console.error("❌ Error comunicándose con el backend:", error);

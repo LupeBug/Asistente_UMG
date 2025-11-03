@@ -33,7 +33,8 @@ export const handleChat = async (req, res) => {
     console.log(`✅ [CHAT] Respuesta generada en ${processingTime}ms`);
     console.log(`🤖 [CHAT] Respuesta: "${response}"`);
     
-    res.json({ response });
+    res.json({ reply: response });
+
   } catch (err) {
     /* Manejo de errores con logging detallado */
     const processingTime = Date.now() - startTime;
